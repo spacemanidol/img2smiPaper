@@ -1,0 +1,28 @@
+\cite{Bajusz2015WhyIT}
+
+1. Formally define task
+2. Describe dataset construction and size
+3. Describe Metrics and reasing 
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/chembl.training.smi
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/chembl.validation.smi
+
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/decorator_scaffolds_drd2.training.smi
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/decorator_scaffolds_recap.training.smi
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/decorator_scaffolds_drd2.validation.smi
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/decorator_scaffolds_recap.validation.smi
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/gdb13.1M.training.smi
+%wget https://raw.githubusercontent.com/undeadpixel/reinvent-randomized/master/training_sets/gdb13.1M.validation.smi
+%wget https://raw.githubusercontent.com/alexarnimueller/SMILES_generator/master/data/chembl24_10uM_20-100.csv
+%wget https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/pubchem.zip
+%wget https://cactus.nci.nih.gov/osra/uspto-validation-updated.zip
+%unzip pubchem.zip
+
+%Cc1nc(CN(C)c2ncc(C(=O)[O-])s2)n[nH]1 -> [C][C][=N][C][Branch2_1][Ring1][Ring2][C][N][Branch1_1][C][C][C][=N][C][=C][Branch1_1][Branch1_2][C][Branch1_2][C][=O][O-expl][S][Ring1][Branch2_1][=N][NHexpl][Ring1][S]
+
+A large validation set consisting of 5719 chemical structure images and associated MOL files is available for download. This set was produced from the US Patent Office Complex Work Units and contain one structure per image, ground truth MOL files and a simple Perl script to benchmark the results of your chemical structure recognition software. The benchmark script takes two arguments - first the folder with ground truth files ("molfiles") and second with your generated files - the filenames of individual structures should be identical. It will compare the structures based on standard InChI. This validation set was made possible courtesy of collaboration with Dr. Steve Boyer and Dr. John Kinney.
+
+This file has been updated courtesy of Aniko Valko and Keymodule Ltd., UK. The ground truth molfiles have been corrected and invalid images have been removed.
+Download zip archive here.
+A subset of 450 images from the Japanese Patent Office Chem-Infty dataset containing only organic molecules can be downloaded here:
+images and ground truth.
+This subset is distributed by permission from the original Chem-Infty dataset authors Koji Nakagawa, Akio Fujiyoshi, and Masakazu Suzuki. This work is licensed under a Creative Commons Attribution-Noncommercial-No Derivative Works 2.1 Japan License.

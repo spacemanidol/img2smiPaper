@@ -1,0 +1,110 @@
+\section{Experiment}
+\subsection{Dataset Creation}
+Data comes from :
+\subsection{Implementation}
+
+\section{Experiments}
+The most popular similarity measure for comparing chemical structures represented by means of fingerprints is the Tanimoto (or Jaccard) coefficient T. Two structures are usually considered similar if T > 0.85 (for Daylight fingerprints). However, it is a common misunderstanding that a similarity of T > 0.85 reflects similar bioactivities
+\subsection{Variation with SMILES Processing method}
+ as BPE often splits sequences into tokens which are not
+semantically valuable in respect to the SELFIES/SMILES grammar. Further benchmarking on the
+entire MoleculeNet suite is needed to validate this idea
+
+BPE is a hybrid between character and word-level representations, which allows for
+the handling of large vocabularies in natural language corpora. Motivated by the intuition that rare
+and unknown words can often be decomposed into multiple known subwords, BPE finds the best
+word segmentation by iteratively and greedily merging frequent pairs of characters [32]. We compare
+\begin{table}[b]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+    \hline
+        Model Name & Images Captioned & Valid Captions & Levenshtein Distance & BLEU-1 & MACCS Similatiry & Path Similarity & Morgan Similarity \\ \hline
+        OSRA(Baseline) & \textbf{86.5} & \textbf{65.2} & \textbf{30.841} & \textbf{0.0533} & \textbf{0.3849} & \textbf{0.2835} & \textbf{0.286} \\ \hline
+        SELFI-NET & 61.8 & 61.8 & 53.02 & 0.0289 & 0.1526 & 0.0954 & 0.0451 \\ \hline
+        SMI-100-NET & 3.5 & 3.6 & 42.381 & 0.0128 & 0.0073 & 0.0061 & 0.0028 \\ \hline
+        SMI-200-NET & 3.5 & 3.5 & 42.379 & 0.0073 & 0.006 & 0.0056 & 0.0022 \\ \hline
+        SMI-500-NET & 3.3 & 3.3 & 42.267 & 0.0071 & 0.0068 & 0.0057 & 0.0032 \\ \hline
+        SMI-2000-NET & 10.2 & 10.2 & 40.956 & 0.0049 & 0.0515 & 0.027 & 0.0241 \\ \hline
+        SMI-20000-NET & 5.4 & 5.4 & 42.187 & 0.0024 & 0.0092 & 0.0074 & 0.0042 \\ \hline
+    \end{tabular}}
+    \caption{Table 1: Static Encoder. }
+\end{table}
+
+\begin{table}[b]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Model Name & Images Captioned & Valid SMILES & Levenshtein Distance & BLEU-1 & MACCS Similatiry & Path Similarity & Morgan Similarity & Image Reconstruction \\ \hline
+        OSRA(Baseline)  & 86.5 & 65.2 & \textbf{30.841} & 0.0533 & 0.3849 & \textbf{0.2835} & \textbf{0.286} & \textbf{9.0777} \\ \hline
+        SELFI-NET & \textbf{99.4} & \textbf{99.4} & 33.636 & \textbf{0.0549} & \textbf{0.418} & 0.2309 & 0.1328 & 9.5994 \\ \hline
+        SMI-100-NET &  2.9 & 2.9 & 38.229 & 0.024 & 0.1551 & 0.0773 & 0.073 & 9.5184 \\ \hline
+        SMI-200-NET & 21.5 & 21.5 & 39.544 & 0.0148 & 0.1015 & 0.0473 & 0.0455 & 9.4374 \\ \hline
+        SMI-NET & 8.5 & 8.5 & 41.423 & 0.0097 & 0.0385 & 0.0183 & 0.0162 & 9.4737 \\ \hline
+        SMI-NET &  20 & 20 & 39.955 & 0.0115 & 0.0787 & 0.0393 & 0.0285 & 9.5625 \\ \hline
+        SMI-NET &  18.1 & 18.0 & 41.406 & 0.0042 & 0.0412 & 0.0121 & 0.0139 & 9.4855 \\ \hline
+    \end{tabular}}
+    \caption{Table 1: Finetune Encoder. }
+\end{table}
+To explore ...
+Self-Referencing Embedded Strings (SELFIES): A 100% robust molecular string representation \cite{Krenn2019SelfReferencingES}
+\subsection{Transformer Based IMG2SMI}
+Reference File:data/evaluation_labels.smi
+Candidate File:outputs/1e5finetune-predictions.txt
+There are 5000 examples being evaluated
+Percent Captions Generated:0.9952
+Percent Valid SMI Generated:0.995
+Exact matches for Cannonical SMI strings:144
+Levenshtein Distance:23.6692
+BLEU-1 using data/tokenizers/tokenizer_vocab_20000.json tokenizer:0.058
+MACCS Fingerprinting Tanimoto Similarity:0.7583
+RD Path Fingerprinting Tanimoto Similarity:0.5751
+Morgan Fingerprint Tanimoto Similarity:0.5079
+
+Reference File:data/evaluation_labels.smi
+Candidate File:outputs/3e5finetune-predictions.txt
+There are 5000 examples being evaluated
+Percent Captions Generated:0.9954
+Percent Valid SMI Generated:0.9954
+Exact matches for Cannonical SMI strings:343
+Levenshtein Distance:21.409
+BLEU-1 using data/tokenizers/tokenizer_vocab_20000.json tokenizer:0.0611
+MACCS Fingerprinting Tanimoto Similarity:0.9309
+RD Path Fingerprinting Tanimoto Similarity:0.8724
+Morgan Fingerprint Tanimoto Similarity:0.8362
+
+Reference File:data/evaluation_labels.smi
+Candidate File:outputs/5e5base-predictions.txt
+There are 5000 examples being evaluated
+Percent Captions Generated:0.9958
+Percent Valid SMI Generated:0.9958
+Exact matches for Cannonical SMI strings:123
+Levenshtein Distance:24.6992
+BLEU-1 using data/tokenizers/tokenizer_vocab_20000.json tokenizer:0.0584
+MACCS Fingerprinting Tanimoto Similarity:0.7674
+RD Path Fingerprinting Tanimoto Similarity:0.5724
+Morgan Fingerprint Tanimoto Similarity:0.4944
+
+
+Reference File:data/evaluation_labels.smi
+Candidate File:outputs/5e5finetune-predictions.txt
+There are 5000 examples being evaluated
+Percent Captions Generated:0.9954
+Percent Valid SMI Generated:0.9954
+Exact matches for Cannonical SMI strings:362
+Levenshtein Distance:21.1306
+BLEU-1 using data/tokenizers/tokenizer_vocab_20000.json tokenizer:0.0615
+MACCS Fingerprinting Tanimoto Similarity:0.9475
+RD Path Fingerprinting Tanimoto Similarity:0.902
+Morgan Fingerprint Tanimoto Similarity:0.8707
+
+Reference File:data/evaluation_labels.smi
+Candidate File:outputs/pyosra-predictions.txt
+There are 5000 examples being evaluated
+Percent Captions Generated:0.7956
+Percent Valid SMI Generated:0.604
+Exact matches for Cannonical SMI strings:2
+Levenshtein Distance:32.7606
+BLEU-1 using data/tokenizers/tokenizer_vocab_20000.json tokenizer:0.0511
+MACCS Fingerprinting Tanimoto Similarity:0.36
+RD Path Fingerprinting Tanimoto Similarity:0.279
+Morgan Fingerprint Tanimoto Similarity:0.2677

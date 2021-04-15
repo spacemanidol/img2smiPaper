@@ -1,0 +1,75 @@
+\section{Related Work}
+\subsection{Molecule Representation}
+OSRA does not work well with large molecules or with variants in design nor can it be tuned to a task
+Chemgrapher \cite{Oldenhof2020ChemGrapherOG} improves on OSRA producing a python based 
+Thousands of scientific publications describe new chemical compounds and investigate their
+properties. However, the structure of these chemical compounds are usually described in the
+publication only as an image. This means that today a rich source of data, which would be
+extremely valuable to develop novel machine learning approaches or simply query documents
+more accurately, is largely under-exploited. It is therefore important to convert images of
+chemical structures into these formats. A few tools for recognizing graph structures from
+chemical compound images are available, such as OSRA [8] and others like ChemReader [18],
+Kekule [17], CLiDE Pro [25], and the work of M. Sadawi et al.. However, we observe that,
+using these tools, bond multiplicity and stereochemical information are sometimes lost. Those
+tools are mainly expert systems using different techniques, such as image processing, optical
+character recognition, hand-coded rules, or sophisticated algorithms. Modifying or further
+improving these tools requires a lot of effort. A tool based on machine learning, which learns
+directly from training data, would be most valuable. Such a tool could potentially become
+more accurate than existing methods and its performance could be improved by increasing
+the size and the diversity of the data sets, instead of having to modify its code.
+Therefore, we propose a new data-driven machine learning based tool that can learn from
+only image data to recognize the chemical structure graph given an image of a chemical
+structure. The core of the tool is a deep learning model. In the work of Staker et al., another
+deep learning model was also proposed. However, there the output is only a text-sequence
+representing the graph. In our approach, we focus on directly predicting the graph structure
+(i.e., identifying all the nodes and the edges and their labels). The positions of these nodes
+and edges in the resulting graph would correspond with the positions in the original image
+of the chemical structure. The resulting graph can be later translated to any format (e.g.,
+SMILES).
+
+The molecular representation refers to the digital encoding used
+for each molecule that serves as input for training the deep learning model. A representation scheme must capture essential structural information about each molecule. Creating an appropriate
+representation from a molecular structure is called featurization.
+Two important properties that are desirable (but not required)
+for representations are uniqueness and invertibility. Uniqueness
+2
+means that each molecular structure is associated with a single representation. Invertibility means that each representation
+is associated with a single molecule (a one-to-one mapping).
+Most representations used for molecular generation are invertible, but many are non-unique. There are many reasons for nonuniqueness, including the representation not being invariant to
+the underlying physical symmetries of rotation, translation, and
+permutation of atomic indexes.
+There are several ways to represent graphs for machine learning. The most popular way is the SMILES string representation. 47
+3
+SMILES strings are a non-unique representation which encode
+the molecular graph into a sequence of ASCII characters using
+a depth-first graph traversal. SMILES are typically first converted
+into a one-hot based representation. Generative models then produce a categorical distribution for each element, often with a softmax function, which is sampled. Since standard multinomial sampling procedures are non-differentiable, sampling can be avoided
+during training or a Gumbel-softmax can be used
+\subsection{Chem AI}
+Most small molecules are easily represented as 2D images (with
+some notable exceptions like cubane). Inspired by the success
+of Google’s Inception-ResNet deep convolutional neural network
+(CNN) architecture for image recognition, Goh et al. developed
+“Chemception”, a deep CNN which predicts molecular properties
+using custom-generated images of the molecular graph. 61 The
+Chemception framework takes a SMILES string in and produces
+an 80x80 greyscale image which is actually an array of integers,
+where empty space is ‘0’, bonds are ‘2’ and atoms are represented
+by their atomic number. 61 Bjerrum et al. extend this idea, producing “images” with five color channels which encode a variety
+of molecular features, some which have been compressed to few
+dimensions using PCA. 52
+When scientists design new molecules for a certain application, they have to synthesize them to check experimentally that they possess the right properties. If they don't, the scientists design new molecules (that can be analogs of the previously synthesized molecules, for example), and iterate until they obtain molecules that satisfy their requirements (properties, performance, price, toxicity, environmental impact, etc.). This iterative process takes a lot of time and money.
+
+Being able to accurately predict the properties of hypothetical molecules would allow researchers to synthesize only the most promising ones and to avoid synthesizing and testing many molecules that don't possess the desired properties. Methods of prediction of molecule properties have been used for a long time, often under the name of Quantitative Structure-Activity Relationships (QSAR) or Quantitative Structure-Property Relationships (QSPR). These methods are usually based on physical laws or empirical relationships relating the structure of molecules (often indirectly, via a set of chosen descriptors) to their properties.
+
+The prediction of molecular properties can also be done using machine learning algorithms. These algorithms have been used to predict properties such as bioactivity, toxicity, solubility, melting points, atomization energies, HOMO/LUMO molecular orbital energies and many other kinds of properties. They are neither based on physical laws nor on manually crafted empirical relationships: they are entirely data-driven. Basically, these AI algorithms are trained by feeding them many examples of molecules and their associated properties (supervised learning). Different regression or classification algorithms can be used, such as linear regression, Support Vector Machines, Random Forests or Neural Networks.
+
+AI-based algorithms are particularely well-suited to problems for which the physical laws that determine the molecular properties to be predicted are not exactly known, or when empirical relationships would be too complicated to establish, eg. because of strong non-linearities or correlations between parameters. Interestingly, AI can be used in combination with other prediction methods such as physical equations or empirical relationships, in order to obtain predictions that are even more accurate. For example, AI can use the results of predictions made by physical or empirical relationships as input data, a technique called stacking.
+
+Several deep learning algorithms have been used to design new molecules: variational autoencoders, adversarial autoencoders, recurrent neural networks and graph convolutional networks. These algorithms generate molecular structures either as SMILES strings or directly as graphs, a more recent technique. These deep learning algorithms need to be trained on large numbers of molecules, typically millions, to construct a statistical distribution of the molecules. Several datasets containing millions of molecules are freely available, such as the ZINC database, the QM9 dataset of the ChEMBL database and can be used as training datasets. When generating SMILES strings, it is necessary to check the validity of the generated strings in order to eliminate invalid SMILES. In addition, when using this kind of algorithms, one should verify that the generated molecules are effectively different from the molecules of the training dataset and measure the chemical diversity of the generated molecules (how different they are from known molecules).
+\subsection{Molecule Extraction}
+Chem Grapher\cite{Oldenhof2020ChemGrapherOG} 
+\subsection{Image Captioning}
+
+
+We DETR \cite{Carion2020EndtoEndOD}

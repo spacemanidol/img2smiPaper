@@ -1,0 +1,48 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage[export]{adjustbox}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[ruled,vlined]{algorithm2e}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\unif}{\pazocal{U}}
+\renewcommand*{\ttdefault}{cmtt}
+\usepackage{tabularx}               % Better table formatting
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\usepackage{multirow}               % Multi-row in tables
+\usepackage{diagbox}                % Diagonal line in tables
+\usepackage{hhline}                 % Draw double line in tables
+\usepackage{color}                  % Text and background color
+\usepackage{amssymb}                % Formula
+\usepackage{mathtools}              % Formula
+\usepackage{enumitem}               % Better itemize environment
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mr}{\mathrm}
+\newcommand{\ola}{\overleftarrow}
+\newcommand{\ora}{\overrightarrow}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\ccgreen}{\cellcolor{Emerald!10}}
+\newcommand{\ccdgreen}{\cellcolor{Emerald!20}}
+\newcommand{\ccddgreen}{\cellcolor{Emerald!35}}
+\newcommand{\x}{\checkmark}
+\usepackage{makecell}
+\usepackage{xcolor}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\definecolor{effectspancolor}{RGB}{0, 51, 125}
+\definecolor{drugspancolor}{RGB}{44, 7, 110}
+\usepackage{xparse}
+\NewDocumentCommand{\heng}{ mO{} }{\textcolor{red}{\textsuperscript{\textit{Heng}}\textsf{\textbf{\small[#1]}}}}
+\NewDocumentCommand{\daniel}{ mO{} }{\textcolor{blue}{\textsuperscript{\textit{Tuan}}\textsf{\textbf{\small[#1]}}}}
+\newcommand\topalign[1]{%
+  \setbox0\hbox{#1}%
+  \raisebox{\dimexpr-\ht0+\dp0\relax}{\usebox0}}
+  \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
